@@ -14,8 +14,8 @@ def mydearwatson(input_seller):
 
     # --- Authentication ----
     discovery = DiscoveryV1(
-        username="60dd891d-9f19-4fd2-bb8a-912add37f1b4",
-        password="tN4F1bLcMzQH",
+        username="0f0d0683-fe01-4409-8fd3-ff5b0966da31",
+        password="QVeoQYmEchVs",
         version="2017-11-07"
     )
     #--- Need to write a function to read seller ------
@@ -33,13 +33,14 @@ def mydearwatson(input_seller):
     number = np.int(my_query["matching_results"])
 
     relevance = [my_query["results"][i]['result_metadata']['score'] for i in range(3)]
+    titles = [my_query["results"][i]["title"] for i in range(3)]
     urls = [my_query["results"][i]["url"] for i in range(3)]
     #whether or not link is  'positive', 'negative' or 'neutral'
     label = [my_query["results"][i]['enriched_text']['sentiment']['document']['label'] for i in range(3)]
 
     #let's define a pandas dataframe:
 
-    po = pd.DataFrame(list(zip(label,urls,relevance)), columns = ['Sentiment', 'Article', 'Relevance'] )
+    po = pd.DataFrame(list(zip(label,titles,urls,relevance)), columns = ['Sentiment', 'Title','URL', 'Relevance'] )
 
 
     #Getting an aggregate score
