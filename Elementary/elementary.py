@@ -41,7 +41,7 @@ def mydearwatson(input_seller):
 
     #let's define a pandas dataframe:
 
-    po = pd.DataFrame(list(zip(label,titles,urls,orgs,relevance)), columns = ['Sentiment', 'Title','URL','Source','Relevance'] )
+    po = pd.DataFrame(list(zip(label,titles,urls,orgs,relevance)), columns = ['Sentiment','Title','URL','Source','Relevance'] )
 
 
     #Getting an aggregate score
