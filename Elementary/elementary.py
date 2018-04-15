@@ -14,13 +14,13 @@ def mydearwatson(input_seller):
 
     # --- Authentication ----
     discovery = DiscoveryV1(
-        username="0f0d0683-fe01-4409-8fd3-ff5b0966da31",
-        password="QVeoQYmEchVs",
+        username="60dd891d-9f19-4fd2-bb8a-912add37f1b4",
+        password="tN4F1bLcMzQH",
         version="2017-11-07"
     )
     #--- Need to write a function to read seller ------
 
-    query_string = 'enriched_text.entitites.text:' + input_seller + ', labor|labour'
+    query_string = 'enriched_text.entities.text:' + input_seller + ', labor|labour'
     qopts = {'query': query_string, 'counts':'10'}
     my_query = discovery.query('system', 'news-en', qopts)
 
