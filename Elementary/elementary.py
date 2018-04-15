@@ -35,7 +35,13 @@ def mydearwatson(input_seller):
     relevance = [my_query["results"][i]['result_metadata']['score'] for i in range(3)]
     titles = [my_query["results"][i]["title"] for i in range(3)]
     urls = [my_query["results"][i]["url"] for i in range(3)]
-    orgs = [my_query["results"][i]["forum_title"] for i in range(3)]
+    orgs = []
+    for i in range(3):
+        try:
+            orgs.append(my_query["results"][i]["forum_title"])
+        except KeyError:
+            orgs.append(None)
+
     #whether or not link is  'positive', 'negative' or 'neutral'
     label = [my_query["results"][i]['enriched_text']['sentiment']['document']['label'] for i in range(3)]
 
@@ -50,3 +56,8 @@ def mydearwatson(input_seller):
     output_string = output_string.format(number, input_seller, scoooore)
     return(po,output_string)
 
+if __name__ == '__main__':
+    comp = 'Patagonia'
+    a, b = mydearwatson(comp)
+    print(b)
+    print(a)
