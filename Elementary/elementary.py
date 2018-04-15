@@ -35,12 +35,13 @@ def mydearwatson(input_seller):
     relevance = [my_query["results"][i]['result_metadata']['score'] for i in range(3)]
     titles = [my_query["results"][i]["title"] for i in range(3)]
     urls = [my_query["results"][i]["url"] for i in range(3)]
+    orgs = [my_query["results"][i]["forum_title"] for i in range(3)]
     #whether or not link is  'positive', 'negative' or 'neutral'
     label = [my_query["results"][i]['enriched_text']['sentiment']['document']['label'] for i in range(3)]
 
     #let's define a pandas dataframe:
 
-    po = pd.DataFrame(list(zip(label,titles,urls,relevance)), columns = ['Sentiment', 'Title','URL', 'Relevance'] )
+    po = pd.DataFrame(list(zip(label,titles,urls,orgs,relevance)), columns = ['Sentiment', 'Title','URL','Source','Relevance'] )
 
 
     #Getting an aggregate score
