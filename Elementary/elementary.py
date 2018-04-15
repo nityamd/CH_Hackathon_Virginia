@@ -20,8 +20,8 @@ def mydearwatson(input_seller):
     )
     #--- Need to write a function to read seller ------
 
-    query_string = 'enriched_text.entitites.text:' + input_seller + ', labor|labour,' + input_seller
-    qopts = {'query': query_string}
+    query_string = 'enriched_text.entitites.text:' + input_seller + ', labor|labour'
+    qopts = {'query': query_string, 'counts':'10'}
     my_query = discovery.query('system', 'news-en', qopts)
 
     #query returns a sorted list of upto potentially 50 objects-
